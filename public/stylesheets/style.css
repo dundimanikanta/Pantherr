@@ -1,0 +1,749 @@
+@import url('http://fonts.cdnfonts.com/css/my-puma');
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+
+
+
+
+
+/* navbar css starts here */
+#panthername{
+   color:white;
+}
+
+#okok{
+    font-size:36p;
+    color:white;
+}
+
+
+.i{
+   font-size:36px;
+   color:white;
+}
+
+.navbar{
+    background-image: linear-gradient(to right top, #32bbcd, #00cdb9, #54da8b, #a8df4e, #ffd700);    
+    background-size: 100% 100%;
+    color:white;
+ }
+ 
+ #company{
+    font-family: 'My Puma', sans-serif;
+    color:white;
+ }
+
+ .companyInfo{
+    margin-top:20px;
+    display:flex;
+ }
+
+ .headLogo{
+    width:50px;
+ }
+
+ .nav-link{
+    color:white;
+    text-decoration: none;
+    font-size: large;
+    
+ }
+
+ .nav-link:hover{
+    color:white;
+    text-decoration: underline rgb(255, 0, 255);
+    text-underline-offset: 12px;
+ }
+ .nav-link:visited{
+    color:white;
+    text-decoration: underline rgb(255, 0, 255);
+    text-underline-offset: 12px;
+ }
+
+ #navbarNav{
+    margin-left: 30px;
+ }
+
+
+ .navbar-toggler:focus {
+    
+    outline: none!important;
+  }
+
+  #cartbtn{
+     color:white;
+  }
+ /* navbar css end here */
+
+
+ /* home page starts here */
+
+ .pointerbtn{
+   cursor: pointer;
+ }
+
+ .lead {
+   color: rgb(4, 4, 4);
+   font-size: 25px;
+   font-family: 'Playfair Display', serif;
+}
+
+.btn1,
+.btn2,
+.btn3 {
+   border: 1px solid #568fb6;
+   background: none;
+   padding: 10px 20px;
+   font-size: 20px;
+   font-family: "montserrat";
+   cursor: pointer;
+   margin: 10px;
+   color: #568fb6;
+   transition: 0.8s;
+}
+
+.btn1:hover {
+   color: #fff;
+   border: 1px solid #fff;
+}
+
+.btn3:hover,
+.btn2:hover {
+   color: #fff;
+   background-color: #000000;
+   border: 1px solid #fff;
+}
+
+.btn1::before,
+.btn2::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   width: 100%;
+   height: 0%;
+   background-image: linear-gradient(to left bottom, #32bbcd, #00cdb9, #54da8b, #a8df4e, #ffd700);
+   z-index: -1;
+   transition: 0.8s;
+   top: 0;
+   border-radius: 0 0 50% 50%;
+}
+
+.btn1:hover::before,
+.btn2:hover::before {
+   height: 220%;
+}
+
+.btn3 {
+   transition: all 0.5 ease-in;
+}
+
+
+.just {
+   background-color: #d7e3fc;
+}
+
+
+
+.hov1,
+.hov2,
+.hov3 {
+    position: relative;
+    background-color: #252839;
+    font-size: 3em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+}
+
+.hov1::before,
+.hov2::before,
+.hov3::before {
+    content: attr(data-text);
+    position: absolute;
+    color: #fff;
+    width: 2.6rem;
+    overflow: hidden;
+    transition: 1s;
+}
+
+.hov2::before {
+    width: 3.0rem;
+}
+
+.hov3::before {
+    width: 1.9rem;
+}
+
+.hov1:hover::before {
+    width: 10.4rem;
+    -webkit-text-stroke: 1px #fff;
+
+}
+
+.hov2:hover::before {
+    width: 14.2rem;
+    -webkit-text-stroke: 1px #fff;
+}
+
+.hov3:hover::before {
+    width: 8.9rem;
+    -webkit-text-stroke: 1px #fff;
+}
+
+
+
+
+@media (max-width: 600px) {
+
+    /* buttons */
+    .btn1,
+    .btn2,
+    .btn3 {
+        font-size: 18px;
+        margin: 7px;
+    }
+
+    .btn1:hover {
+        color: #fff;
+        background-color: #000000;
+        border: 1px solid #fff;
+    }
+
+    .btn1::before,
+    .btn2::before {
+        background-image: none;
+    }
+
+    .btn2,
+    .btn1 {
+        transition: all 0.5 ease-in;
+    }
+
+
+}
+
+.row{
+   
+      --bs-gutter-x: 0;
+ 
+}
+
+
+
+
+
+
+
+ /* home page ends here */
+
+
+ /* footer */
+.footerstyling{
+  display:flex;
+  font-size:2rem;
+}
+
+
+.Footer{
+ 
+
+  background-image: linear-gradient(to left bottom, #32bbcd, #00cdb9, #54da8b, #a8df4e, #ffd700);
+
+  color:white;
+}
+
+.footerLinks{
+   color:rgb(245, 245, 245,0.6);
+ text-decoration: none;
+}
+.footerLinks:hover{
+   color:white;
+  
+}
+#pantherLogo{
+   font-family: 'My Puma', sans-serif;
+                                               
+}
+
+.footlinks{
+  color:white;
+  text-decoration: none;
+}
+.footlinks:hover{
+  color:white;
+  text-decoration: none;
+}
+
+
+
+ /* men page starts here */
+
+
+
+.addtocartbtn{
+   background-color: #49d9bd;
+    color: white;
+}
+
+
+/*  */
+
+.prodiv {
+   display: flex;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   align-items: center;
+}
+
+.card {
+
+   margin: 1%;
+   margin-bottom: 20px;
+
+   border-radius: 3%;
+   width: 18rem;
+
+}
+
+img {
+   border-radius: 3% 3% 0 0;
+}
+
+.priceClass {
+   color: #f31515cc;
+}
+
+.card-body .ratingClass span {
+   color: gold;
+   font-size: large;
+
+}
+
+.headfont {
+   font-family: 'Edu VIC WA NT Beginner', cursive;
+   font-size: 3.6rem;
+   font-weight: 500;
+   ;
+}
+
+
+@media (min-width: 400px) and (max-width: 768px) {
+   .card {
+       width: 25rem;
+   }
+}
+
+.card:hover {
+   box-shadow: rgba(232, 237, 97) 0px 6px 12px -2px, rgba(232, 237, 97) 0px 3px 7px -3px;
+   transform: scale(1.02);
+   cursor: pointer;
+
+}
+
+#titleimage {
+   box-sizing: "border-box";
+}
+
+#titleimagediv {
+   display: flex;
+   justify-content: center;
+
+}
+
+.headImagediv {
+   --bs-gutter-x: 0;
+}
+
+.headImages {
+   border-radius: 0;
+   padding-top: 0.5rem;
+}
+
+
+.addToCartBtn{
+   background-color: #49d9bd;
+  color:white; 
+ padding-left: 0.7rem;
+ padding-right: 0.7rem;
+ padding-top:0.375rem;
+ padding-bottom: 0.375rem;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.5;
+ border-width: 1px;
+ border-color: transparent;
+ border-radius: 0.375rem;
+
+ display: inline-block;
+ text-align: center;
+ text-decoration: none;
+ vertical-align: middle;
+
+ 
+}
+
+/*    
+show page css starts here */
+
+#showsection{
+  display: flex;
+  justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+}
+
+
+
+ /* cart page ccs */
+
+
+.delToCartBtn{
+   background-color:#ec2626;
+  color:white; 
+ padding-left: 0.7rem;
+ padding-right: 0.7rem;
+ padding-top:0.375rem;
+ padding-bottom: 0.375rem;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.5;
+ border-width: 1px;
+ border-color: transparent;
+ border-radius: 0.375rem;
+
+ display: inline-block;
+ text-align: center;
+ text-decoration: none;
+ vertical-align: middle;
+
+ 
+}
+
+
+/* #cartaddeditems{
+   display: flex;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   align-items: center;
+} */
+
+.addquantity{
+   background-color: green;
+   color:white; 
+ padding-left: 0.7rem;
+ padding-right: 0.7rem;
+ padding-top:0.375rem;
+ padding-bottom: 0.375rem;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.5;
+ border-width: 1px;
+ border-color: transparent;
+ border-radius: 0.375rem;
+
+ display: inline-block;
+ text-align: center;
+ text-decoration: none;
+ vertical-align: middle;
+}
+.decreasequantity{
+   background-color:rgb(238, 211, 123);
+   color:white; 
+ padding-left: 0.7rem;
+ padding-right: 0.7rem;
+ padding-top:0.375rem;
+ padding-bottom: 0.375rem;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.5;
+ border-width: 1px;
+ border-color: transparent;
+ border-radius: 0.375rem;
+
+ display: inline-block;
+ text-align: center;
+ text-decoration: none;
+ vertical-align: middle;
+}
+
+
+#clearcartbtn{
+   background-color: greenyellow;
+    color: black;
+ padding-left: 0.7rem;
+ padding-right: 0.7rem;
+ padding-top:0.375rem;
+ padding-bottom: 0.375rem;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.5;
+ border-width: 1px;
+ border-color: transparent;
+ border-radius: 0.375rem;
+
+ display: inline-block;
+ text-align: center;
+ text-decoration: none;
+ vertical-align: middle;
+ margin:5px;
+}
+
+
+.cartemptypic{
+   box-sizing: border-box; 
+}
+.cartimagepic{
+    display: flex;
+     justify-content: center;
+}
+
+
+.product-image {
+   float: left;
+   width: 20%;
+ }
+ 
+ .product-details {
+   float: left;
+   width: 37%;
+ }
+ 
+ .product-price {
+   float: left;
+   width: 12%;
+ }
+ 
+ .product-quantity {
+   float: left;
+   width: 10%;
+ }
+ 
+ .product-removal {
+   float: left;
+   width: 9%;
+ }
+ 
+ .product-line-price {
+   float: left;
+   width: 12%;
+   text-align: right;
+ }
+ 
+ /* This is used as the traditional .clearfix class */
+ .group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+ .group:after,
+ .shopping-cart:after,
+ .column-labels:after,
+ .product:after,
+ .totals-item:after {
+   content: '';
+   display: table;
+ }
+ 
+ .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+   clear: both;
+ }
+ 
+ .group, .shopping-cart, .column-labels, .product, .totals-item {
+   zoom: 1;
+ }
+ 
+ 
+ 
+ label {
+   color: #aaa;
+ }
+ 
+ .shopping-cart {
+   margin-top: -45px;
+ }
+ 
+ /* Column headers */
+ .column-labels label {
+   padding-bottom: 15px;
+   margin-bottom: 15px;
+   border-bottom: 1px solid #eee;
+ }
+ .column-labels{
+  margin: 10px;
+ }
+ /* .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+   text-indent: -9999px;
+ } */
+ 
+ /* Product entries */
+ .product {
+  margin: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+   
+ }
+
+ .product .product-image img {
+   width: 100px;
+ }
+ .product .product-details .product-title {
+   margin-right: 20px;
+   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+ }
+ .product .product-details .product-description {
+   margin: 5px 20px 5px 0;
+   line-height: 1.4em;
+ }
+ .product .product-quantity input {
+   width: 40px;
+ }
+ .product .remove-product {
+   border: 0;
+   padding: 4px 8px;
+   background-color: #c66;
+   color: #fff;
+   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+   font-size: 12px;
+   border-radius: 3px;
+ }
+ .product .remove-product:hover {
+   background-color: #a44;
+ }
+ 
+ /* Totals section */
+ .totals .totals-item {
+   float: right;
+   clear: both;
+   width: 100%;
+   margin-bottom: 10px;
+ }
+ .totals .totals-item label {
+   float: left;
+   clear: both;
+   width: 79%;
+   text-align: right;
+ }
+ .totals .totals-item .totals-value {
+   float: right;
+   width: 21%;
+   text-align: right;
+ }
+ .totals .totals-item-total {
+   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+ }
+ 
+ .checkout {
+   float: right;
+   border: 0;
+   margin-top: 20px;
+   padding: 6px 25px;
+   background-color: #6b6;
+   color: #fff;
+   font-size: 25px;
+   border-radius: 3px;
+ }
+ 
+ .checkout:hover {
+   background-color: #494;
+ }
+ 
+ /* Make adjustments for tablet */
+ @media screen and (max-width: 895px) {
+   .shopping-cart {
+     margin: 0;
+     padding-top: 20px;
+     border-top: 1px solid #eee;
+   }
+ 
+   .column-labels {
+     display: none;
+   }
+ 
+   .product-image {
+     float: right;
+     width: auto;
+   }
+   .product-image img {
+     margin: 0 0 10px 10px;
+   }
+ 
+   .product-details {
+     float: none;
+     margin-bottom: 10px;
+     width: auto;
+   }
+ 
+   .product-price {
+     clear: both;
+     width: 70px;
+     transform: translateY(6px);
+   }
+ 
+   .product-quantity {
+     width: 100px;
+    
+   display: flex;
+   justify-content: space-evenly;
+   }
+   .product-quantity input {
+     margin-left: 20px;
+   }
+ 
+   .product-quantity:before {
+     content: 'x';
+     transform: translateY(5.5px);
+   }
+ 
+   .product-removal {
+     width: auto;
+   }
+ 
+   .product-line-price {
+     float: right;
+     width: 70px;
+   }
+ }
+ /* Make more adjustments for phone */
+ @media screen and (max-width: 500px) {
+   .product-removal {
+     float: right;
+   }
+ 
+   .product-line-price {
+     float: right;
+     clear: left;
+     width: auto;
+     margin-top: 10px;
+   }
+ 
+   .product .product-line-price:before {
+     content: 'Item Total: ';
+   }
+ 
+   .totals .totals-item label {
+     width: 60%;
+   }
+   .totals .totals-item .totals-value {
+     width: 40%;
+   }
+ }
+
+
+ .totalpriceline{
+  text-align: right;
+  margin-right: 10px;
+  font-weight: 100;
+ }
+ 
+
+
+
+/* //////////////// */
+body{
+  justify-content: space-between;
+}
+/* //////// */

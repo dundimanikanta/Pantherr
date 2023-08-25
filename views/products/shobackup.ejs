@@ -1,0 +1,62 @@
+
+<section id="mensection">
+   
+        
+    <div class="prodiv container"  id="menprodiv">
+       
+      
+        <div class="card col-lg-4 col-sm-10 col-md-4 px-0">
+          <img class="img-fluid" src="<%=el.imageUrl  %>" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title"><%= el.name %></h5>
+            <h6 class="card-text priceClass">
+              <span>&#x20b9;</span> <%= el.price %>
+            </h6>
+            <p class="ratingClass"><%= el.rating %> &nbsp;<span>&#9733;</span></p>
+            
+                   <a href="/<%= el.category %>"><button class="addToCartBtn" id="<%= el.id %>">Back</button> </a>
+            
+          </div>
+        </div>
+      
+      </div>
+
+
+      <div class="reviews-form">
+
+         <h2>submit a review</h2>
+
+        <form action="/<%= el.category %>/<%= el._id %>" method="POST"  >
+          <div class="mb-3">
+            <label class="form-label" for="rating">rating</label>
+             <input class="form-range" type="range" name="review[rating]" id="rating" min="0" max="5"> 
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="body">review</label>
+            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" ></textarea>
+          </div>
+           
+          <button class="btn btn-success">submit</button>
+      </form>
+      </div>
+
+
+      <div class="reviews-display">
+            <h2>all reviews</h2>
+
+            <% for(let review of el.reviews) { %>
+              <div class="card mb-3 ">
+                  <div class="card-body">
+                      <h5 class="card-title">Rating: <%= review.rating %></h5>
+                      <p class="card-text">Review: <%= review.body %></p>
+                      
+                     
+                  </div>
+              </div>
+              <% } %>
+  
+      </div>
+    
+       
+</section>
+    

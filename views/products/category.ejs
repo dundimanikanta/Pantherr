@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate')%>
+
+
+
+
+
+
+
+
+
+<section id="mensection">
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="headfont">Men's Wear</h1>
+                <hr />
+            </div>
+        </div>
+    </div>
+
+        
+<div class="prodiv container"  id="menprodiv">
+    <% for( let el of dataSet ) { %>
+  
+    <div class="card col-lg-4 col-sm-10 col-md-4 px-0">
+      <img class="img-fluid" src="<%=el.imageUrl  %>" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title"><%= el.name %></h5>
+        <h6 class="card-text priceClass">
+          <span>&#x20b9;</span> <%= el.price %>
+        </h6>
+        <p class="ratingClass"><%= el.rating %> &nbsp;<span>&#9733;</span></p>
+
+        <a href="/products/<%= el.category %>/<%= el._id %>">
+          <button class="addToCartBtn" >
+            Details
+          </button>
+        </a>
+       
+      </div>
+    </div>
+    <% } %>
+  </div>
+
+   
+</section>
+

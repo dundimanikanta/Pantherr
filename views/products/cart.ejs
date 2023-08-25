@@ -1,0 +1,84 @@
+<% layout('layouts/boilerplate') %>
+
+<section id="cartsection">
+
+        <% if (cart.length===0) { %>
+            <div class="container-fluid  p-0 cartemptypic" >
+                <div class="row justify-content-center" id='emptycart'>
+                  <div class="col-6  cartimagepic" >
+                    <div>
+                      <img class="img-fluid" src="images/emptycart.png" />
+                    </div>
+          
+                  </div>
+                </div>
+            </div>
+          
+        <% }  else{%>
+            <div class="cart2ndpart">
+
+                <div id="cartaddeditems">
+                      <div class="column-labels">
+                        <label class="product-image">Image</label>
+                        <label class="product-details">Product</label>
+                        <label class="product-price">Price</label>
+                        <label class="product-quantity">Quantity</label>
+                        <label class="product-removal">Remove</label>
+                        <label class="product-line-price">Total</label>
+                      </div>
+                      <% for( let el of cart ) { %>
+                        <div class="product">
+                            <div class="product-image">
+                              <img src="<%=el.imageUrl  %>">
+                            </div>
+                            <div class="product-details">
+                              <div class="product-title"> <%= el.name%></div>
+                              
+                            </div>
+                            <div class="product-price"><span>&#x20b9;</span><%= el.price %></div>
+                            <div class="product-quantity">
+                              
+                                <p class="quantityClass">
+
+                                  <form action="/cart/products/<%= el._id %>/decrease?_method=PUT" method="post">
+                                    <button class="decreasequantity" >-</button>
+                                  </form> 
+                                  &nbsp<%= el.quantity %>&nbsp
+
+                                  <form action="/cart/products/<%= el._id %>/increase?_method=PUT" method="post">
+                                    <button class="addquantity <%= el.quantity===9 ? 'disabled' : '' %>" >+</button>
+                                  </form> 
+                                </p> 
+                            </div>
+                            <div class="product-removal">
+                              <form action="/cart/products/<%= el._id %>/delete?_method=PUT" method="post">
+                                <button class="delToCartBtn"  ><i class="fa-solid fa-trash"></i></button> 
+                              </form> 
+                            </div>
+                            <div class="product-line-price">&#x20b9;<%= el.price*el.quantity %></div>
+                          </div>
+                      <% } %>
+                   
+                </div>
+        
+                <h1 class="totalpriceline">Total price :&#8377;<%= totalcost %>&nbsp;<span id="totalPrice"></span></h1>
+                
+                 <form action="/cart?_method=DELETE" method="post">
+                  <button id="clearcartbtn" >Clear Cart</button>
+                 </form>
+
+                 <form action="/cart/confirmorder" method="post">
+                  <button class="btn btn-success " >Confirm Order</button>
+                 </form>
+                
+        
+            </div>
+    <% } %>
+     
+        
+
+   
+   
+    
+
+</section>

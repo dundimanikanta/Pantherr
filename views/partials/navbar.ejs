@@ -1,0 +1,45 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand " id="panthername">PANTHER</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/" class="nav-link menbtn pointerbtn">Home</a>
+                    
+                </li>
+                <li class="nav-item">
+                     <a href="/products/men" class="nav-link menbtn pointerbtn">Men</a>
+                 
+                </li>
+                <li class="nav-item">
+                    <a href="/products/women" class="nav-link menbtn pointerbtn">Women</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/products/kids" class="nav-link menbtn pointerbtn">Kids</a>
+                </li>
+
+                <% if (!currentuser) { %>
+                    <a href="/login" class="nav-link menbtn pointerbtn">Login</a>
+                    <a href="/register" class="nav-link menbtn pointerbtn">Register</a>
+              
+                <% } else { %>
+                    <a href="/<%= currentuser._id %>/orders" class="nav-link menbtn pointerbtn">My orders</a>
+                       
+                    <a href="/logout" class="nav-link menbtn pointerbtn">Logout</a>
+                <% } %>
+
+            </ul>
+            <span class="navbar-text">
+
+                <a class="nav-link pointerbtn" id="cartbtn" href="/cart"><i class="fas fa-shopping-cart"></i>(<span
+                        id="cartitems"><%= cart.length %></span>)</a>
+
+            </span>
+        </div>
+    </div>
+</nav>
