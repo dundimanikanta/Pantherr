@@ -11,7 +11,7 @@ const methodOverride=require('method-override');
 const mongoose=require('mongoose');
 const session=require('express-session');
 const flash=require('connect-flash');
-
+let cookieParser = require('cookie-parser');
 
 const passport=require('passport');
 const localStrategy=require('passport-local');
@@ -20,7 +20,7 @@ const catchasync = require('./utilities/catchasync');
 const ExpressError = require('./utilities/expresserror');
 
 const user=require('./models/user')
-
+app.use(cookieParser());
 
 app.engine('ejs',ejsmate);
 app.set('view engine','ejs');
