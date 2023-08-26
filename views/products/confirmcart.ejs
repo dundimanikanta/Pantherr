@@ -40,18 +40,18 @@
                               
                                 <p class="quantityClass">
 
-                                  <form action="/cart/products/<%= el._id %>/decrease?_method=PUT" method="post">
+                                  <form action="/cart/products/<%= el._id %>/decreasec?_method=PUT" method="post">
                                     <button class="decreasequantity" >-</button>
                                   </form> 
                                   &nbsp<%= el.quantity %>&nbsp
 
-                                  <form action="/cart/products/<%= el._id %>/increase?_method=PUT" method="post">
-                                    <button class="addquantity <%= el.quantity===9 ? 'disabled' : '' %>" >+</button>
+                                  <form action="/cart/products/<%= el._id %>/increasec?_method=PUT" method="post">
+                                    <button class="addquantity" >+</button>
                                   </form> 
                                 </p> 
                             </div>
                             <div class="product-removal">
-                              <form action="/cart/products/<%= el._id %>/delete?_method=PUT" method="post">
+                              <form action="/cart/products/<%= el._id %>/deletec?_method=PUT" method="post">
                                 <button class="delToCartBtn"  ><i class="fa-solid fa-trash"></i></button> 
                               </form> 
                             </div>
@@ -63,15 +63,13 @@
         
                 <h1 class="totalpriceline">Total price :&#8377;<%= totalcost %>&nbsp;<span id="totalPrice"></span></h1>
                 
-                 <form action="/cart?_method=DELETE" method="post">
+                 <form action="/cart/c?_method=DELETE" method="post">
                   <button id="clearcartbtn" >Clear Cart</button>
                  </form>
 
-                
                  <form action="/cart/confirmorder" method="post">
-                  <button class="btn btn-success " >Confirm Order</button>
-                 </form>
-                 
+                    <button class="btn btn-success " >Confirm Order</button>
+                </form>
                 
         
             </div>

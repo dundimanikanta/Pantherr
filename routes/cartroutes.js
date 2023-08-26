@@ -21,14 +21,19 @@ router.get('/',(req,res)=>{
   ////////////////
   router.get('/confirmcart',isloggedin,catchasync(async(req,res)=>{
   
-    //console.log(res.locals);
-    req.session.cart=req.cookies.cart;
+   
+         if(req.session.cart.length===0)
+         {
+          req.session.cart=req.cookies.cart;
+       
+         }
+       
+        
     let totalcost=0;
     req.session.cart.forEach(el => totalcost+= el.price*el.quantity);
     res.render('products/confirmcart.ejs',{ cart: req.session.cart,totalcost})
         
-       
-
+      
     }))
 
 
@@ -107,6 +112,7 @@ router.put('/products/:idd/increase',catchasync( async(req,res)=>{
   const {idd}=req.params;
 const x=req.session.cart.find(el => el._id===idd);
 x.quantity=x.quantity+1;
+console.log(req.session.cart);
   
     res.redirect(`/cart`);
 
@@ -128,7 +134,7 @@ router.put('/products/:idd/decrease',catchasync( async(req,res)=>{
             x.quantity=x.quantity-1;
            }
            
-
+          console.log(req.originalUrl);
     
   
     res.redirect(`/cart`);
@@ -150,6 +156,56 @@ res.redirect(`/cart`);
          
     res.render('products/cart.ejs',{ cart: req.session.cart})
   })
+
+///////////////////////////
+   
+  router.put('/products/:idd/increasec',catchasync( async(req,res)=>{
+    const {idd}=req.params;
+  const x=req.session.cart.find(el => el._id===idd);
+  x.quantity=x.quantity+1;
+  console.log(req.session.cart);
+    
+      res.redirect(`/cart/confirmcart`);
   
+  
+  }))
+  
+  router.put('/products/:idd/decreasec',catchasync( async(req,res)=>{
+    const {idd}=req.params;
+  
+       
+          
+           const x=req.session.cart.find(el => el._id===idd);
+  
+             if(x.quantity===1)
+             {
+                req.session.cart= req.session.cart.filter(el => el._id!==idd)
+             }
+             else{
+              x.quantity=x.quantity-1;
+             }
+             
+            console.log(req.originalUrl);
+      
+    
+      res.redirect(`/cart/confirmcart`);
+  
+  
+  }))
+  
+  
+  router.put('/products/:idd/deletec',catchasync( async(req,res)=>{
+    const {idd}=req.params;
+  req.session.cart= req.session.cart.filter(el => el._id!==idd)
+  res.redirect(`/cart/confirmcart`);
+  }))
+  
+  
+    router.delete('/c',(req,res)=>{
+  
+      req.session.cart=[];
+           
+      res.render('products/confirmcart.ejs',{ cart: req.session.cart})
+    })
 
   module.exports=router;

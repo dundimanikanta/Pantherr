@@ -27,22 +27,6 @@ module.exports.storeReturnTo = (req, res, next) => {
 
 
 
-// module.exports.isAuthor =async (req,res,next)=>{
-//   const {id}=req.params;
-//   const cmpgnd=await campitem.findById(id);
-//     if(!req.user)
-//     {
-//       req.flash('error','you are not logged in')
-//       return  res.redirect(`/login`);  
-//     }
-
-//   if(  !cmpgnd.author.equals(req.user._id ) )
-//   { req.flash('error','you are no the author')
-//   return  res.redirect(`/campgrounds/${id}`);  
-//   }
-//   next();
-
-// }
 
 module.exports.isreviewAuthor =async (req,res,next)=>{
   const {cat,idd,revid}=req.params;
