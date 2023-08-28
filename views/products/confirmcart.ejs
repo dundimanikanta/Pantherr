@@ -67,11 +67,37 @@
                   <button id="clearcartbtn" >Clear Cart</button>
                  </form>
 
-                 <form action="/cart/confirmorder" method="post">
-                    <button class="btn btn-success " >Confirm Order</button>
-                </form>
+
+                 <div class="addaddressdiv">
+
+                  <form action="/<%= currentuser._id %>/addaddress" method="post" class="validated-form" novalidate>
+                  
+                  
+                    <label for="address">Add Address</label>
+                    <input type="text" class="form-control" name="address" id="address" required>
+
+                    <button class="btn btn-success">add address</button>
+           
+                   </form>
+                 </div>
+                 
+
+                  <div class="confirmorder col-8">
+                    <form action="/<%= currentuser._id %>/confirmorder" method="post" class="validated-form" novalidate>
+                      <label for="shippingaddress">Select shipping Address</label>
+                      <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="shippingaddress" id="shippingaddress" required>
+                        
+                            <% cuser.addresses.forEach((el,i) => { %>
+                              <option value="<%= i %>"><%= el %></option>
+                            <% }) %>
+                        
+                      </select>
+                     
+                      <button class="btn btn-success " >Confirm Order</button>
+                  </form>
+                  </div>
+
                 
-        
             </div>
     <% } %>
      

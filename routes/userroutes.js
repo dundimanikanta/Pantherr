@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const user = require('../models/user');
 const passport = require('passport');
-
+const order = require('../models/order');
 const catchasync = require('../utilities/catchasync');
 router.get('/register', (req, res) => {
     res.render('users/register.ejs');
@@ -64,10 +64,71 @@ router.get('/:idd/orders',isloggedin,catchasync(async(req,res)=>{
 
     const us=await user.findById(idd).populate('orders');
      let orders= us.orders;
+    
     res.render('users/orders.ejs',{orders});
 
   ///  console.log(us.orders[0].items[0].name);
 }))
+
+
+router.post('/:idd/addaddress',isloggedin,catchasync(async(req,res)=>{
+
+
+    const {idd}=req.params;
+
+    const us=await user.findById(idd);
+
+
+    const {address}=req.body;
+
+    us.addresses.push(address);
+
+    await us.save();
+
+    console.log(us);
+
+    res.redirect('/cart/confirmcart');
+     
+
+ 
+}))
+
+router.post('/:idd/confirmorder',isloggedin,catchasync(async(req,res)=>{
+     
+   
+ 
+  const x=new order({
+   
+  });
+   x.orderedBy=req.user._id;
+
+
+     
+     req.session.cart.forEach( async(el) => {      
+         x.items.push(el);     
+     });
+
+     const us=await user.findById(req.user._id);
+     const  shipadd=us.addresses[req.body.shippingaddress];
+     x.shippingaddress=shipadd;
+     console.log(x);
+     await x.save();
+     us.orders.push(x);
+     await us.save(); 
+
+  
+     
+     req.session.cart=[];
+
+  
+    
+     req.flash('success','successfully placed an order')
+
+     res.redirect(`/${req.user._id}/orders`);
+
+ }))
+
+
 
 
 router.get('/:idd/orders/:ordernum',isloggedin,catchasync(async(req,res)=>{
@@ -76,11 +137,11 @@ router.get('/:idd/orders/:ordernum',isloggedin,catchasync(async(req,res)=>{
     const {idd,ordernum}=req.params;
 
     const us=await user.findById(idd).populate('orders');
-     let order= us.orders[ordernum].items;
+     let order= us.orders[ordernum];
 
      let totalcost=0;
 
-     order.forEach(el =>  totalcost+= el.price*el.quantity );
+     order.items.forEach(el =>  totalcost+= el.price*el.quantity );
      //console.log(order);
    res.render('users/order.ejs',{order,totalcost});
 

@@ -27,48 +27,14 @@ router.get('/',(req,res)=>{
           req.session.cart=req.cookies.cart;
        
          }
-       
+       const cuser= await user.findById(res.locals.currentuser._id); 
         
     let totalcost=0;
     req.session.cart.forEach(el => totalcost+= el.price*el.quantity);
-    res.render('products/confirmcart.ejs',{ cart: req.session.cart,totalcost})
+    res.render('products/confirmcart.ejs',{ cart: req.session.cart,totalcost,cuser})
         
       
     }))
-
-
-  router.post('/confirmorder',isloggedin,catchasync(async(req,res)=>{
-    
-
-     const x=new order({
-      
-     });
-      x.orderedBy=req.user._id;
-
-        
-        req.session.cart.forEach( async(el) => {      
-            x.items.push(el);     
-        });
-
-        const us=await user.findById(req.user._id);
-        await x.save();
-        us.orders.push(x);
-        await us.save(); 
-        
-        req.session.cart=[];
-
-     
-       
-        req.flash('success','successfully placed an order')
-
-        res.redirect(`/${req.user._id}/orders`);
-
-    }))
-
-
-
-
-
 
 
   /////////////////////
@@ -208,4 +174,6 @@ res.redirect(`/cart`);
       res.render('products/confirmcart.ejs',{ cart: req.session.cart})
     })
 
+
+   
   module.exports=router;

@@ -11,6 +11,10 @@ const orderSchema=new mongoose.Schema({
    orderedBy:{
     type: mongoose.Schema.Types.ObjectId,
     ref:'user'
+   },
+   shippingaddress:{
+    type:String,
+    required:true,
    }
 
 

@@ -15,7 +15,7 @@
                         
                         <label class="product-line-price">Total</label>
                       </div>
-                      <% for( let el of order ) { %>
+                      <% for( let el of order.items ) { %>
                         <div class="product">
                             <div class="product-image">
                               <img src="<%=el.imageUrl  %>">
@@ -42,6 +42,9 @@
                 
         
             </div>
+
+
+            <h4>Shipped to:<h5><%= order.shippingaddress %></h5></h4>
     
      
         

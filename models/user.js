@@ -15,7 +15,13 @@ const userSchema=new Schema({
             type:Schema.Types.ObjectId,
             ref:'order'
         }
-    ]
+    ],
+    addresses:[
+        {
+            type:String,   
+        }
+    ],
+
     
    
 });
