@@ -4,6 +4,13 @@ const user = require('../models/user');
 const passport = require('passport');
 const order = require('../models/order');
 const catchasync = require('../utilities/catchasync');
+
+var Publishable_Key ='pk_test_51NjzyjSIXS0xZZwrXnc53ZBrnW3OFJoE1vMpoU9pZgHbeQzJSD1k6y4ytH2cKtN4mvMgLiQUbn5ZcW7bPXIBprij00WaY9647b'
+
+var Secret_Key = 'sk_test_51NjzyjSIXS0xZZwr6AnpCHmRWqgL3pG0SJ2O8jMhL2regoBYKTOtcj3Gn3J5Pv7lceHXZulP8HQ7cRyvlHmKPPEl00dK8bu7jP';
+ 
+const stripe = require('stripe')(Secret_Key)
+
 router.get('/register', (req, res) => {
     res.render('users/register.ejs');
 })
@@ -95,39 +102,75 @@ router.post('/:idd/addaddress',isloggedin,catchasync(async(req,res)=>{
 }))
 
 router.post('/:idd/confirmorder',isloggedin,catchasync(async(req,res)=>{
+    
+    let totalcost=0;
+    req.session.cart.forEach(el => totalcost+= el.price*el.quantity);
      
-   
+
+    stripe.customers.create({
+        email: req.body.stripeEmail,
+        source: req.body.stripeToken,
+        name: 'Panther',
+        address: {
+            line1: 'TC 9/4 Old MES colony',
+            postal_code: '452331',
+            city: 'Indore',
+            state: 'Madhya Pradesh',
+            country: 'IN',
+        }
+    })
+    .then((customer) => {
  
-  const x=new order({
+        return stripe.paymentIntents.create({
+            amount: totalcost*100,     // Charging Rs 25
+            description: 'Web Development Product',
+            currency: 'inr',
+            customer: customer.id
+        });
+    })
+    .then(async(charge) => {
+       // res.send("Success")  // If no error occurs
+       const x=new order({
    
-  });
-   x.orderedBy=req.user._id;
-
-
+       });
+    
      
-     req.session.cart.forEach( async(el) => {      
-         x.items.push(el);     
-     });
-
-     const us=await user.findById(req.user._id);
-    const  shipadd=us.addresses[req.body.shippingaddress];
+          
+          req.session.cart.forEach( async(el) => {      
+              x.items.push(el);     
+          });
+     
+          const us=await user.findById(req.user._id);
+         const  shipadd=us.addresses[req.body.shippingaddress];
+          
+            
+          x.shippingaddress=shipadd;
+          x.orderedBy=req.user._id;
+     
+          console.log(x);
+          await x.save();
+          us.orders.push(x);
+          await us.save(); 
      
        
-     x.shippingaddress=shipadd;
-     console.log(x);
-     await x.save();
-     us.orders.push(x);
-     await us.save(); 
-
-  
+          
+          req.session.cart=[];
      
-     req.session.cart=[];
-
+       
+         
+          req.flash('success','successfully placed an order')
+     
+          res.redirect(`/${req.user._id}/orders`);
+    })
+    .catch((err) => {
+         const msg= err.message;
+        req.flash('error',`${msg}`)
+     
+        res.redirect(`/cart/confirmcart`);
+       // res.send(err)       // If some error occurs
+    });
+ 
   
-    
-     req.flash('success','successfully placed an order')
-
-     res.redirect(`/${req.user._id}/orders`);
 
  }))
 

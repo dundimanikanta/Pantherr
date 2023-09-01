@@ -29,6 +29,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 
+
+
+
+
+
 const dbUrl=process.env.DB_URL || 'mongodb://127.0.0.1:27017/panther';
 const secret=process.env.SECRET || "hgvbnjhgb";
 

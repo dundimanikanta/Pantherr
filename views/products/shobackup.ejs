@@ -74,3 +74,30 @@
            
                    </form>
   </div> -->
+
+
+
+
+
+  <div class="confirmorder row  ">
+    <div class="col-md-8 col-11">
+     <form action="/<%= currentuser._id %>/confirmorder" method="post" class="validated-form" novalidate>
+       <label for="shippingaddress">Select shipping Address</label>
+       <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="shippingaddress"
+         id="shippingaddress" required>
+
+         <% cuser.addresses.forEach((el,i)=> { %>
+           <option value="<%= i %>" class="form-control">
+             <%= el %>
+           </option>
+           <% }) %>
+
+       </select>
+
+       <button class="btn btn-success mt-2 ">Confirm Order</button>
+
+     </form>
+     
+    </div>
+   
+ </div>

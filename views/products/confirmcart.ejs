@@ -165,7 +165,7 @@
 
           <div class="confirmorder row  ">
              <div class="col-md-8 col-11">
-              <form action="/<%= currentuser._id %>/confirmorder" method="post" class="validated-form" novalidate>
+              <form action="/<%= currentuser._id %>/confirmorder" method="post" >
                 <label for="shippingaddress">Select shipping Address</label>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="shippingaddress"
                   id="shippingaddress" required>
@@ -177,9 +177,20 @@
                     <% }) %>
     
                 </select>
-    
-                <button class="btn btn-success mt-2 ">Confirm Order</button>
+                <script
+                   src="//checkout.stripe.com/v2/checkout.js"
+                   class="stripe-button"
+                   data-key="pk_test_51NjzyjSIXS0xZZwrXnc53ZBrnW3OFJoE1vMpoU9pZgHbeQzJSD1k6y4ytH2cKtN4mvMgLiQUbn5ZcW7bPXIBprij00WaY9647b"
+                   data-amount="<%= totalcost*100 %>"
+                   data-currency="inr"
+                   data-name="Panther"
+                   data-description="payment provided by stripe"
+                   data-locale="auto" >
+                 </script>
+
               </form>
+              payment
+             
              </div>
             
           </div>
