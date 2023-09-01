@@ -79,7 +79,8 @@ router.post('/:idd/addaddress',isloggedin,catchasync(async(req,res)=>{
     const us=await user.findById(idd);
 
 
-    const {address}=req.body;
+    const {houseno,apartment,street,area,city,pincode,district,state}=req.body;
+    const address=houseno+','+apartment+','+street+','+area+','+city+','+pincode+','+district+','+state;
 
     us.addresses.push(address);
 
@@ -109,7 +110,9 @@ router.post('/:idd/confirmorder',isloggedin,catchasync(async(req,res)=>{
      });
 
      const us=await user.findById(req.user._id);
-     const  shipadd=us.addresses[req.body.shippingaddress];
+    const  shipadd=us.addresses[req.body.shippingaddress];
+     
+       
      x.shippingaddress=shipadd;
      console.log(x);
      await x.save();
